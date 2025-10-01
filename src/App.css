@@ -3,3 +3,73 @@
     margin: 0 auto;
     background-color: #ffffff;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #aab77c;
+    color: white;
+    padding: 16px 24px;
+}
+
+.logo {
+    font-family: "Titan One", sans-serif;
+    color: rgb(49, 79, 44);
+    font-size: 1.5rem;
+}
+
+.settings-icon {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.weather__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather__info h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.weather__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120px;
+}
+
+.temperatures {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.temperatures p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.temperature--low span,
+.temperature--high span {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+span.celsius {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 4px;
+}
