@@ -55,5 +55,62 @@
             "unit": "hours"
         },
         "indoor": true
+    },
+    {
+        "image": "",
+        "nickname": "",
+        "common_name": "Spider Plant",
+        "scientific_name": "Chlorophytum 'Bonnie'",
+        "watering_interval": {
+            "min": 1,
+            "max": 2,
+            "unit": "weeks"
+        },
+        "watering_period": ["Morning", "Noon", "Evening"],
+        "sunlight": ["Part shade", "Filtered Shade"],
+        "sunlight_duration": {
+            "min": 4,
+            "max": 6,
+            "unit": "hours"
+        },
+        "indoor": true
+    },
+    {
+        "image": "",
+        "nickname": "",
+        "common_name": "Spider Plant",
+        "scientific_name": "Chlorophytum 'Bonnie'",
+        "watering_interval": {
+            "min": 1,
+            "max": 2,
+            "unit": "weeks"
+        },
+        "watering_period": ["Morning", "Noon", "Evening"],
+        "sunlight": ["Part shade", "Filtered Shade"],
+        "sunlight_duration": {
+            "min": 4,
+            "max": 6,
+            "unit": "hours"
+        },
+        "indoor": true
+    },
+    {
+        "image": "",
+        "nickname": "",
+        "common_name": "Spider Plant",
+        "scientific_name": "Chlorophytum 'Bonnie'",
+        "watering_interval": {
+            "min": 1,
+            "max": 2,
+            "unit": "weeks"
+        },
+        "watering_period": ["Morning", "Noon", "Evening"],
+        "sunlight": ["Part shade", "Filtered Shade"],
+        "sunlight_duration": {
+            "min": 4,
+            "max": 6,
+            "unit": "hours"
+        },
+        "indoor": true
     }
 ]

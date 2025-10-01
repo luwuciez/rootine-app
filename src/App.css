@@ -1,6 +1,6 @@
 .app {
     width: 393px;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     background-color: #ffffff;
 }
@@ -15,7 +15,7 @@
     align-items: center;
     background-color: #aab77c;
     color: white;
-    padding: 16px 24px;
+    padding: 16px;
     box-sizing: border-box;
     z-index: 10;
 }
@@ -74,7 +74,7 @@ main {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 24px;
+    padding: 8px 16px;
 }
 
 .weather__info {
@@ -118,7 +118,7 @@ span.celsius {
 }
 
 .catalog {
-    padding: 16px 24px;
+    padding: 16px;
 }
 
 .catalog h2 {
@@ -142,7 +142,7 @@ span.celsius {
     background-color: #eaefe5;
     border: 1px solid #c8d4bd;
     border-radius: 8px;
-    width: 164.5px;
+    width: 172.5px;
     height: 200px;
     position: relative;
     overflow: hidden;
