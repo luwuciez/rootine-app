@@ -1,5 +1,6 @@
 .app {
     width: 393px;
+    height: 100vh;
     margin: 0 auto;
     background-color: #ffffff;
 }
@@ -31,7 +32,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 8px 24px;
 }
 
 .weather__info {
@@ -72,4 +73,67 @@ span.celsius {
     font-size: 1rem;
     font-weight: 400;
     margin-left: 4px;
+}
+
+.catalog {
+    padding: 16px 24px;
+}
+
+.catalog h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.plants-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.plant-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #eaefe5;
+    border: 1px solid #c8d4bd;
+    border-radius: 8px;
+    width: 164.5px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.card__image {
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card__info {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 8px;
+    z-index: 1;
+}
+
+.card__info h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card__info p {
+    margin: 4px 0 0 0;
+    font-size: 0.875rem;
+    color: #616161;
 }

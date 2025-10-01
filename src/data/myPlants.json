@@ -1,0 +1,59 @@
+[
+    {
+        "image": "",
+        "nickname": "Druid",
+        "common_name": "Aloe",
+        "scientific_name": "Aloe vera",
+        "watering_interval": {
+            "min": 2,
+            "max": 4,
+            "unit": "weeks"
+        },
+        "watering_period": ["Morning", "Noon", "Evening"],
+        "sunlight": ["Full sun"],
+        "sunlight_duration": {
+            "min": 4,
+            "max": 6,
+            "unit": "hours"
+        },
+        "indoor": true
+    },
+    {
+        "image": "",
+        "nickname": "Emma",
+        "common_name": "English Lavender",
+        "scientific_name": "Lavandula angustifolia",
+        "watering_interval": {
+            "min": 4,
+            "max": 7,
+            "unit": "days"
+        },
+        "watering_period": ["Morning", "Evening"],
+        "sunlight": ["Full sun"],
+        "sunlight_duration": {
+            "min": 6,
+            "max": 8,
+            "unit": "hours"
+        },
+        "indoor": false
+    },
+    {
+        "image": "",
+        "nickname": "",
+        "common_name": "Spider Plant",
+        "scientific_name": "Chlorophytum 'Bonnie'",
+        "watering_interval": {
+            "min": 1,
+            "max": 2,
+            "unit": "weeks"
+        },
+        "watering_period": ["Morning", "Noon", "Evening"],
+        "sunlight": ["Part shade", "Filtered Shade"],
+        "sunlight_duration": {
+            "min": 4,
+            "max": 6,
+            "unit": "hours"
+        },
+        "indoor": true
+    }
+]
