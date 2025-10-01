@@ -7,11 +7,17 @@
 
 .navbar {
     display: flex;
+    position: fixed;
+    top: 0;
+    width: 393px;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
     background-color: #aab77c;
     color: white;
     padding: 16px 24px;
+    box-sizing: border-box;
+    z-index: 10;
 }
 
 .logo {
@@ -25,6 +31,42 @@
     height: 40px;
     background-color: white;
     border-radius: 50%;
+}
+
+.botbar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 393px;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.add-button {
+    width: 64px;
+    height: 64px;
+    background-color: #596a3a;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
 }
 
 .weather-container {
