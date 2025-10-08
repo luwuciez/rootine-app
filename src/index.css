@@ -1,15 +1,15 @@
 :root {
-    font-family: "Alan Sans", sans-serif;
-    font-weight: 400;
-    background-color: rgb(36, 36, 36);
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 400;
+  background-color: rgb(36, 36, 36);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

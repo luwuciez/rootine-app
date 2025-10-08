@@ -7,18 +7,18 @@ import BotBar from "./components/BotBar";
 import AddButton from "./components/AddButton";
 
 function App() {
-    return (
-        <div className="app">
-            <Navbar></Navbar>
-            <Main>
-                <Weather></Weather>
-                <PlantCatalog></PlantCatalog>
-            </Main>
-            <BotBar>
-                <AddButton></AddButton>
-            </BotBar>
-        </div>
-    );
+  return (
+    <div className="app">
+      <Navbar></Navbar>
+      <Main>
+        <Weather></Weather>
+        <PlantCatalog></PlantCatalog>
+      </Main>
+      <BotBar>
+        <AddButton></AddButton>
+      </BotBar>
+    </div>
+  );
 }
 
 export default App;

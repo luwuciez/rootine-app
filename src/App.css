@@ -1,181 +1,181 @@
 .app {
-    width: 393px;
-    min-height: 100vh;
-    margin: 0 auto;
-    background-color: #ffffff;
+  width: 393px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #ffffff;
 }
 
 .navbar {
-    display: flex;
-    position: fixed;
-    top: 0;
-    width: 393px;
-    height: 60px;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #aab77c;
-    color: white;
-    padding: 16px;
-    box-sizing: border-box;
-    z-index: 10;
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 393px;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #aab77c;
+  color: white;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
 .logo {
-    font-family: "Titan One", sans-serif;
-    color: rgb(49, 79, 44);
-    font-size: 1.5rem;
+  font-family: "Titan One", sans-serif;
+  color: rgb(49, 79, 44);
+  font-size: 1.5rem;
 }
 
 .settings-icon {
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .botbar {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    width: 393px;
-    height: 60px;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    box-sizing: border-box;
-    z-index: 10;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 393px;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
 .add-button {
-    width: 64px;
-    height: 64px;
-    background-color: #596a3a;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    color: white;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  background-color: #596a3a;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 main {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    box-sizing: border-box;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
 }
 
 .weather-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
 }
 
 .weather__info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .weather__info h1 {
-    font-size: 1.25rem;
-    font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .weather__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120px;
 }
 
 .temperatures {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .temperatures p {
-    font-size: 1rem;
-    margin: 0;
+  font-size: 1rem;
+  margin: 0;
 }
 
 .temperature--low span,
 .temperature--high span {
-    font-size: 3rem;
-    font-weight: 700;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 span.celsius {
-    font-size: 1rem;
-    font-weight: 400;
-    margin-left: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 4px;
 }
 
 .catalog {
-    padding: 16px;
+  padding: 16px;
 }
 
 .catalog h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-    margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 16px;
 }
 
 .plants-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
 }
 
 .plant-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #eaefe5;
-    border: 1px solid #c8d4bd;
-    border-radius: 8px;
-    width: 172.5px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #eaefe5;
+  border: 1px solid #c8d4bd;
+  border-radius: 8px;
+  width: 172.5px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .card__image {
-    height: 200px;
-    width: auto;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .card__info {
-    background-color: white;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 8px;
-    z-index: 1;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px;
+  z-index: 1;
 }
 
 .card__info h4 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .card__info p {
-    margin: 4px 0 0 0;
-    font-size: 0.875rem;
-    color: #616161;
+  margin: 4px 0 0 0;
+  font-size: 0.875rem;
+  color: #616161;
 }
