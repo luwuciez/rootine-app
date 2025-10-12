@@ -1,29 +1,47 @@
+/* ============ Theme tokens ============ */
+:root {
+  --olive: #516a2a;
+  /* headings, primary button */
+  --olive-600: #4a5e2f;
+  --chip-border: #b0b9a0;
+  /* neutral outline */
+  --chip-bg-active: #d9e3ca;
+  /* subtle green when selected */
+  --day-bg-active: #b8cca0;
+  /* stronger for day dots */
+  --text-dark: #1e221c;
+  --text-mid: #425136;
+}
+
+/* Buttons, pills, sort options share transitions */
 .button-base,
 .pill,
 .sort-option {
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
+/* ===== Trigger button (unchanged) ===== */
 .filter-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #059669;
+  background-color: var(--olive);
   color: white;
   padding: 0.5rem 1rem;
-  border: 2px solid #059669;
+  border: 2px solid var(--olive);
   border-radius: 9999px;
   margin-left: 16px;
 }
 
 .filter-button:hover {
-  background-color: #047857;
-  border-color: #047857;
+  background-color: var(--olive-600);
+  border-color: var(--olive-600);
 }
 
+/* ===== Modal ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -36,57 +54,59 @@
 }
 
 .modal-content {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1);
   width: 100%;
-  max-width: 361px;
+  max-width: 360px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
+/* Header matches right screenshot */
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 20px;
+  border-bottom: 1px solid #edf0e8;
 }
 
 .modal-header h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1f2937;
   margin: 0;
+  font-size: 1.25rem;
+  /* smaller than left mock */
+  font-weight: 800;
+  color: var(--olive);
+  /* olive title */
+  letter-spacing: 0;
+  /* not uppercase */
 }
 
 .close-button {
   background: none;
   border: none;
-  color: #9ca3af;
   cursor: pointer;
   padding: 0;
-  transition: color 0.2s;
+  color: #a7b39a;
   font-size: 1.5rem;
 }
 
 .close-button:hover {
-  color: #4b5563;
+  color: var(--olive);
 }
 
 .modal-body {
   flex: 1;
-  padding: 1.5rem;
+  padding: 16px 20px;
   overflow-y: auto;
 }
 
+/* Section titles in olive, not uppercase */
 .filter-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 18px;
 }
 
 .filter-section:last-child {
@@ -94,120 +114,138 @@
 }
 
 .filter-section h3 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #374151;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--olive);
+  text-transform: none;
+  letter-spacing: 0;
 }
 
+/* Sort options: neutral outlined cards */
 .sort-options {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .sort-option {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background: white;
-  color: #374151;
+  padding: 12px 14px;
+  border: 2px solid var(--chip-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text-dark);
 }
 
 .sort-option:hover {
-  border-color: #d1d5db;
+  border-color: #c9cfbf;
+  background: #fafbf8;
 }
 
+/* Active is still subtle, not green-filled */
 .sort-option.active {
-  border-color: #059669;
-  background-color: #ecfdf5;
-  color: #047857;
+  border-color: #b6c3a6;
+  background: #d9e3ca;
+  color: var(--text-dark);
 }
 
+/* Pills: neutral chips with subtle active */
 .pill-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .pill {
-  padding: 0.5rem 1rem;
-  border: 2px solid #d1d5db;
+  padding: 10px 16px;
+  border: 2px solid var(--chip-border);
   border-radius: 9999px;
-  background: white;
-  color: #374151;
+  background: #fff;
+  color: var(--text-mid);
 }
 
 .pill:hover {
-  border-color: #9ca3af;
+  border-color: #c9cfbf;
 }
 
-.pill.active.light {
-  border-color: #f59e0b;
-  background-color: #fffbeb;
-  color: #b45309;
+.pill.active {
+  background: var(--chip-bg-active);
+  border-color: #b6c3a6;
+  color: var(--text-dark);
 }
 
-.pill.active.location {
-  border-color: #059669;
-  background-color: #ecfdf5;
-  color: #047857;
-}
-
+/* Special case: day dots (S M T W T F S) */
 .pill.watering {
-  border-radius: 50%;
+  width: 40px;
   aspect-ratio: 1;
   padding: 0;
-  width: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
-  font-weight: 600;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .pill.active.watering {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
-  color: #1e40af;
+  background: var(--day-bg-active);
+  border-color: #b6c3a6;
+  color: var(--text-dark);
+
 }
 
+/* === Keep watering schedule days (M T W T F S S) in one line === */
+.filter-section:has(.pill.watering) .pill-options {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 8px;
+  overflow-x: auto;
+  /* allows scroll if needed */
+}
+
+/* Remove the strong color-coding from previous design */
+.pill.active.light,
+.pill.active.location {
+  border-color: #b6c3a6;
+  background: var(--chip-bg-active);
+  color: var(--text-dark);
+}
+
+/* ===== Footer buttons: outline + olive fill ===== */
 .modal-footer {
   display: flex;
-  gap: 0.75rem;
-  padding: 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  gap: 12px;
+  padding: 18px 20px;
+  border-top: 1px solid #edf0e8;
 }
 
 .button-secondary,
 .button-primary {
   flex: 1;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  padding: 12px 16px;
+  border-radius: 14px;
 }
 
 .button-secondary {
-  border: 2px solid #d1d5db;
-  background: white;
-  color: #374151;
+  border: 2px solid var(--chip-border);
+  background: #fff;
+  color: var(--text-dark);
 }
 
 .button-secondary:hover {
-  background-color: #f9fafb;
+  background: #fafbf8;
 }
 
 .button-primary {
   border: none;
-  background-color: #059669;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--olive);
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 .button-primary:hover {
-  background-color: #047857;
+  background: var(--olive-600);
 }

@@ -17,7 +17,7 @@ const FILTER_DATA = {
     { id: "balcony", label: "Balcony" },
     { id: "bathroom", label: "Bathroom" },
   ],
-  days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  days: ["M", "T", "W", "T", "F", "S", "S"],
 };
 
 function FilterSection({ title, options, selected, onSelect, type }) {
