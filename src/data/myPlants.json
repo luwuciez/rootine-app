@@ -1,116 +1,59 @@
 [
-    {
-        "image": "",
-        "nickname": "Druid",
-        "common_name": "Aloe",
-        "scientific_name": "Aloe vera",
-        "watering_interval": {
-            "min": 2,
-            "max": 4,
-            "unit": "weeks"
-        },
-        "watering_period": ["Morning", "Noon", "Evening"],
-        "sunlight": ["Full sun"],
-        "sunlight_duration": {
-            "min": 4,
-            "max": 6,
-            "unit": "hours"
-        },
-        "indoor": true
+  {
+    "id": 0,
+    "image": "",
+    "nickname": "Druid",
+    "common_name": "Aloe",
+    "watering_interval": {
+      "min": 2,
+      "max": 4,
+      "unit": "weeks"
     },
-    {
-        "image": "",
-        "nickname": "Emma",
-        "common_name": "English Lavender",
-        "scientific_name": "Lavandula angustifolia",
-        "watering_interval": {
-            "min": 4,
-            "max": 7,
-            "unit": "days"
-        },
-        "watering_period": ["Morning", "Evening"],
-        "sunlight": ["Full sun"],
-        "sunlight_duration": {
-            "min": 6,
-            "max": 8,
-            "unit": "hours"
-        },
-        "indoor": false
+    "watering_period": ["Morning", "Noon", "Evening"],
+    "sunlight": ["Full sun"],
+    "sunlight_duration": {
+      "min": 4,
+      "max": 6,
+      "unit": "hours"
     },
-    {
-        "image": "",
-        "nickname": "",
-        "common_name": "Spider Plant",
-        "scientific_name": "Chlorophytum 'Bonnie'",
-        "watering_interval": {
-            "min": 1,
-            "max": 2,
-            "unit": "weeks"
-        },
-        "watering_period": ["Morning", "Noon", "Evening"],
-        "sunlight": ["Part shade", "Filtered Shade"],
-        "sunlight_duration": {
-            "min": 4,
-            "max": 6,
-            "unit": "hours"
-        },
-        "indoor": true
+    "indoor": true
+  },
+  {
+    "id": 1,
+    "image": "",
+    "nickname": "Emma",
+    "common_name": "English Lavender",
+    "watering_interval": {
+      "min": 4,
+      "max": 7,
+      "unit": "days"
     },
-    {
-        "image": "",
-        "nickname": "",
-        "common_name": "Spider Plant",
-        "scientific_name": "Chlorophytum 'Bonnie'",
-        "watering_interval": {
-            "min": 1,
-            "max": 2,
-            "unit": "weeks"
-        },
-        "watering_period": ["Morning", "Noon", "Evening"],
-        "sunlight": ["Part shade", "Filtered Shade"],
-        "sunlight_duration": {
-            "min": 4,
-            "max": 6,
-            "unit": "hours"
-        },
-        "indoor": true
+    "watering_period": ["Morning", "Evening"],
+    "sunlight": ["Full sun"],
+    "sunlight_duration": {
+      "min": 6,
+      "max": 8,
+      "unit": "hours"
     },
-    {
-        "image": "",
-        "nickname": "",
-        "common_name": "Spider Plant",
-        "scientific_name": "Chlorophytum 'Bonnie'",
-        "watering_interval": {
-            "min": 1,
-            "max": 2,
-            "unit": "weeks"
-        },
-        "watering_period": ["Morning", "Noon", "Evening"],
-        "sunlight": ["Part shade", "Filtered Shade"],
-        "sunlight_duration": {
-            "min": 4,
-            "max": 6,
-            "unit": "hours"
-        },
-        "indoor": true
+    "indoor": false
+  },
+  {
+    "id": 2,
+    "image": "",
+    "nickname": "Lily",
+    "common_name": "Spider Plant",
+    "watering_interval": {
+      "min": 1,
+      "max": 2,
+      "unit": "weeks"
     },
-    {
-        "image": "",
-        "nickname": "",
-        "common_name": "Spider Plant",
-        "scientific_name": "Chlorophytum 'Bonnie'",
-        "watering_interval": {
-            "min": 1,
-            "max": 2,
-            "unit": "weeks"
-        },
-        "watering_period": ["Morning", "Noon", "Evening"],
-        "sunlight": ["Part shade", "Filtered Shade"],
-        "sunlight_duration": {
-            "min": 4,
-            "max": 6,
-            "unit": "hours"
-        },
-        "indoor": true
-    }
+    "watering_period": ["Morning", "Noon", "Evening"],
+    "sunlight": ["Part shade", "Filtered Shade"],
+    "sunlight_duration": {
+      "min": 4,
+      "max": 6,
+      "unit": "hours"
+    },
+    "indoor": true
+  }
 ]

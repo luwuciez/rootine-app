@@ -4,8 +4,8 @@ export default function Plant({ data }) {
   return (
     <div className="plant-card">
       <div className="card__info">
-        {data.nickname ? <h4>{`"${data.nickname}"`}</h4> : <h4>{data.common_name}</h4>}
-        <p className="scientific-name">{data.scientific_name}</p>
+        <h4>{data.nickname}</h4>
+        <p>{data.common_name}</p>
       </div>
       <div className="card__image">
         {data.image ? (

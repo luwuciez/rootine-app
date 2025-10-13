@@ -33,39 +33,22 @@
   border-radius: 50%;
 }
 
-.botbar {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 393px;
-  height: 60px;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  box-sizing: border-box;
-  z-index: 10;
-}
-
 .add-button {
-  width: 64px;
-  height: 64px;
+  width: 100%;
+  height: 40px;
   background-color: #596a3a;
-  border-radius: 50%;
+  border-radius: 8px;
   font-size: 1.5rem;
   color: white;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 main {
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   box-sizing: border-box;
 }
 
@@ -178,4 +161,112 @@ span.celsius {
   margin: 4px 0 0 0;
   font-size: 0.875rem;
   color: #616161;
+}
+
+/*Modal Styling*/
+.modal{
+  width: 346px;
+  height: 584px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  border: none;
+}
+
+/*Modal Button*/
+
+.add-button {
+  width: 361px;
+  height: 40px;
+  background-color: #EAEFE5;
+  color: #596A3A;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.close-btn{
+  background-color: #ffffff;
+}
+
+/*Add Plant Form*/
+
+.form-control-stack {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.form-control {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: #596A3A solid 1px;
+}
+
+
+.form-group label {
+  white-space: nowrap;
+  font-weight: 600;
+  width: 160px; 
+}
+
+.input-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.input-stack input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-title{
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.form-input{
+  font-size: 16px;
+  color: #B0B0B0;
+  border-radius: 6px;
+  border: 0.5px solid #596A3A;
+  background: #FFF;
+
+
+  display: flex;
+  width: 173px;
+  height: 32px;
+  padding: 1px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+ 
+/*Photo preview*/
+
+.photo-preview {
+  width: 346px;          
+  height: 186px;      
+  border-radius: 10px;
+  display: flex;        
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;      
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+
+/* Both uploaded photos and placeholder fill the container*/
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
 }
