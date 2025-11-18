@@ -16,16 +16,19 @@ const SUNLIGHT_MAPPING = {
   "Filtered Shade": "Part Shade",
 };
 
-export default function PlantCatalog({ 
-  filters = null, 
+export default function PlantCatalog({
+  filters = null,
   plants: plantsProp = null,
+  isWateringMode = false,
+  onWateringModeToggle = null,
+  onPlantWatered = null,
   onPlantAdded: onPlantAddedProp = null,
   onPlantUpdated: onPlantUpdatedProp = null,
   onPlantDeleted: onPlantDeletedProp = null,
 }) {
   const [localPlants, setLocalPlants] = useState(myPlants);
   const plants = plantsProp || localPlants;
-  
+
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -61,17 +64,13 @@ export default function PlantCatalog({
     if (filters.light && filters.light.length > 0) {
       filtered = filtered.filter((plant) => {
         const plantSunlight = normalizeSunlight(plant.sunlight);
-        return filters.light.some((filterLight) =>
-          plantSunlight.includes(filterLight)
-        );
+        return filters.light.some((filterLight) => plantSunlight.includes(filterLight));
       });
     }
 
     // Filter by location
     if (filters.location && filters.location.length > 0) {
-      filtered = filtered.filter((plant) =>
-        filters.location.includes(plant.location)
-      );
+      filtered = filtered.filter((plant) => filters.location.includes(plant.location));
     }
 
     // Filter by watering frequency
@@ -90,7 +89,7 @@ export default function PlantCatalog({
       filtered.sort((a, b) => {
         const nameA = (a.plant_name || a.common_name || a.nickname || "").toLowerCase();
         const nameB = (b.plant_name || b.common_name || b.nickname || "").toLowerCase();
-        
+
         if (filters.sort === "a-z") {
           return nameA.localeCompare(nameB);
         } else if (filters.sort === "z-a") {
@@ -111,7 +110,27 @@ export default function PlantCatalog({
     }
   }
 
+  // Helper function to calculate days until watering is due
+  const getDaysUntilWatering = (plant) => {
+    if (!plant.last_watered) return null;
+
+    const frequency = getWateringFrequency(plant);
+    if (frequency === null) return null;
+
+    const lastWateredDate = new Date(plant.last_watered);
+    const today = new Date();
+    const daysSinceWatered = Math.floor((today - lastWateredDate) / (1000 * 60 * 60 * 24));
+    const daysUntilDue = Math.max(0, Math.ceil(frequency - daysSinceWatered));
+
+    return {
+      daysSinceWatered,
+      daysUntilDue,
+      isOverdue: daysSinceWatered > frequency,
+    };
+  };
+
   function handlePlantClick(plant) {
+    // Always open details on card click. Watering is handled by the toggle button inside each card.
     setSelectedPlant(plant);
     setIsDetailsModalOpen(true);
   }
@@ -149,9 +168,7 @@ export default function PlantCatalog({
       if (onPlantDeletedProp) {
         onPlantDeletedProp(selectedPlant.id);
       } else {
-        setLocalPlants((prevPlants) =>
-          prevPlants.filter((p) => p.id !== selectedPlant.id)
-        );
+        setLocalPlants((prevPlants) => prevPlants.filter((p) => p.id !== selectedPlant.id));
       }
       setIsDetailsModalOpen(false);
       setSelectedPlant(null);
@@ -161,12 +178,31 @@ export default function PlantCatalog({
   return (
     <div className="catalog">
       <h2>My Plants</h2>
-      <Modal btnLabel="Add new plant" btnClassName="add-button">
-        <AddPlantForm onPlantAdded={handlePlantAdded} />
-      </Modal>
+      <div className="catalog-controls">
+        <Modal btnLabel="Add new plant" btnClassName="add-button">
+          <AddPlantForm onPlantAdded={handlePlantAdded} />
+        </Modal>
+        {onWateringModeToggle && (
+          <button
+            className={`watering-button ${isWateringMode ? "active" : ""}`}
+            onClick={onWateringModeToggle}
+          >
+            {isWateringMode ? "Done" : "Mark as Watered"}
+          </button>
+        )}
+      </div>
       <div className="plants-container">
         {filteredAndSortedPlants.map((p) => (
-          <Plant key={p.id} data={p} onClick={() => handlePlantClick(p)} />
+          <Plant
+            key={p.id}
+            data={p}
+            onClick={() => handlePlantClick(p)}
+            isWateringMode={isWateringMode}
+            wateringInfo={getDaysUntilWatering(p)}
+            onToggleWater={(isToggled, prevLast) =>
+              onPlantWatered && onPlantWatered(p.id, isToggled, prevLast)
+            }
+          />
         ))}
       </div>
 
@@ -182,12 +218,7 @@ export default function PlantCatalog({
 
       {/* Edit Plant Modal */}
       {isEditModalOpen && selectedPlant && (
-        <Modal 
-          btnLabel="" 
-          btnClassName="" 
-          isOpen={isEditModalOpen}
-          onClose={handleCloseEditModal}
-        >
+        <Modal btnLabel="" btnClassName="" isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
           <AddPlantForm
             plantToEdit={selectedPlant}
             onPlantUpdated={handlePlantUpdated}
