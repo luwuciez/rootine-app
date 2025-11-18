@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, cloneElement } from "react";
 import "../App.css";
 
 function Modal({ btnLabel, btnClassName, children }) {
@@ -12,6 +12,9 @@ function Modal({ btnLabel, btnClassName, children }) {
     modalRef.current.close();
   }
 
+  // Pass closeModal function to children if they accept onClose prop
+  const childrenWithProps = cloneElement(children, { onClose: closeModal });
+
   return (
     <>
       <button onClick={openModal} className={btnClassName}>
@@ -22,7 +25,7 @@ function Modal({ btnLabel, btnClassName, children }) {
         <button className="close-btn" onClick={closeModal}>
           ×
         </button>
-        {children}
+        {childrenWithProps}
       </dialog>
     </>
   );
