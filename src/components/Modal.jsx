@@ -41,7 +41,7 @@ function Modal({ btnLabel, btnClassName, children, isOpen, onClose }) {
 
       <dialog ref={modalRef} className="modal">
         <button className="close-btn" onClick={closeModal}>
-          ×
+          ❌
         </button>
         {childrenWithProps}
       </dialog>
