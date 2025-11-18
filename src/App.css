@@ -133,13 +133,21 @@ span.celsius {
 }
 
 .card__image {
-  height: 200px;
-  width: auto;
+   height: 200px;
+  width: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+}
+
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card__info {
@@ -186,7 +194,14 @@ span.celsius {
 
 .close-btn{
   background-color: #ffffff;
-}
+  border: none; /* Remove border */
+  font-size: 40px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s ease;
+  outline: none; /* Remove focus outline */}
 
 /*Add Plant Form*/
 
@@ -263,6 +278,9 @@ span.celsius {
   background-color: #f8f8f8;
 }
 
+/**/
+
+
 /* Both uploaded photos and placeholder fill the container*/
 .photo-preview img {
   width: 100%;
@@ -270,6 +288,7 @@ span.celsius {
   object-fit: cover; 
   display: block;
 }
+
 
 /* Plant Details Modal */
 .plant-details-modal {
@@ -290,7 +309,7 @@ span.celsius {
   height: 200px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #f8f8f8;
+  background-color: #EAEFE5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -299,7 +318,7 @@ span.celsius {
 .plant-details-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .plant-details-info {
@@ -337,9 +356,10 @@ span.celsius {
 
 .plant-details-actions {
   display: flex;
-  gap: 12px;
+  justify-content: space-between;
   margin-top: 8px;
 }
+
 
 .btn {
   flex: 1;
@@ -361,20 +381,43 @@ span.celsius {
   background-color: #4a5e2f;
 }
 
-.btn.edit-btn {
-  background-color: #EAEFE5;
-  color: #596A3A;
+
+.edit-btn {
+  color: #ffffff;
+  background-color: #596A3A;
+  width: 85px;
+  border-radius: 85px;
+  font-size: 20px;
+  padding: 0.5rem;
+  border: none;           
 }
 
 .btn.edit-btn:hover {
   background-color: #d9e3ca;
 }
 
-.btn.delete-btn {
-  background-color: #f44336;
-  color: white;
+.delete-btn {
+  background: #FFFFFF;
+  border: none;           
+  cursor: pointer;       
 }
 
-.btn.delete-btn:hover {
-  background-color: #d32f2f;
+.delete-btn:focus {
+  outline: none;         
+  box-shadow: none;      
+}
+
+.delete-btn:focus-visible {
+  outline: none;         
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);  
+  transition: transform 0.2s ease;
+}
+
+.btn-icon {
+  width: 50px;
+  height: px;
+  display: block;
 }

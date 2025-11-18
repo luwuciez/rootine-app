@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { searchPlants } from "../services/plantApi";
 import "../App.css";
+import uploadPhoto from "../assets/upload_Photo.svg";
 
 function AddPlantForm({ onPlantAdded, onPlantUpdated, onClose, plantToEdit }) {
   const [photo, setPhoto] = useState(null);
@@ -167,11 +168,11 @@ function AddPlantForm({ onPlantAdded, onPlantUpdated, onClose, plantToEdit }) {
             {photo ? (
               <img src={photo} alt="Plant preview" />
             ) : (
-              <img
-                src="../src/assets/upload_Photo.svg"
-                alt="Placeholder plant"
-                className="photo-placeholder-img"
-              />
+            <img
+              src={uploadPhoto}
+              alt="Upload plant photo"
+              className="photo-placeholder-img"
+            />
             )}
           </div>
           <input
