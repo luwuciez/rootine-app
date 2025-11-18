@@ -42,7 +42,7 @@ function PlantDetailsModal({ plant, onClose, onEdit, onDelete }) {
   if (!plant) return null;
 
   const plantName = plant.plant_name || plant.common_name || "Unknown Plant";
-  
+
   // Handle watering frequency display (both old and new formats)
   let wateringDisplay = "Not specified";
   if (plant.watering_frequency !== undefined) {
@@ -68,9 +68,9 @@ function PlantDetailsModal({ plant, onClose, onEdit, onDelete }) {
   return (
     <dialog ref={modalRef} className="modal plant-details-modal">
       <button className="close-btn" onClick={onClose}>
-        ×
+        ❌
       </button>
-      
+
       <div className="plant-details-content">
         {/* Plant Image */}
         <div className="plant-details-image">

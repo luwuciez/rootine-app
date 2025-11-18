@@ -7,19 +7,22 @@ function AddPlantForm({ onPlantAdded, onPlantUpdated, onClose, plantToEdit }) {
   const [photo, setPhoto] = useState(null);
   const fileInputRef = useRef();
   const isEditMode = !!plantToEdit;
-  
+
   // Form state - initialize with plantToEdit if editing
   const [formData, setFormData] = useState({
     plant_name: plantToEdit?.plant_name || plantToEdit?.common_name || "",
     nickname: plantToEdit?.nickname || "",
     location: plantToEdit?.location || "",
-    sunlight: plantToEdit?.sunlight || (Array.isArray(plantToEdit?.sunlight) ? plantToEdit.sunlight[0] : ""),
-    watering_frequency: plantToEdit?.watering_frequency || 
-      (plantToEdit?.watering_interval ? 
-        (plantToEdit.watering_interval.unit === "weeks" ? 
-          ((plantToEdit.watering_interval.min + plantToEdit.watering_interval.max) / 2 * 7) : 
-          ((plantToEdit.watering_interval.min + plantToEdit.watering_interval.max) / 2)) : 
-        ""),
+    sunlight:
+      plantToEdit?.sunlight ||
+      (Array.isArray(plantToEdit?.sunlight) ? plantToEdit.sunlight[0] : ""),
+    watering_frequency:
+      plantToEdit?.watering_frequency ||
+      (plantToEdit?.watering_interval
+        ? plantToEdit.watering_interval.unit === "weeks"
+          ? ((plantToEdit.watering_interval.min + plantToEdit.watering_interval.max) / 2) * 7
+          : (plantToEdit.watering_interval.min + plantToEdit.watering_interval.max) / 2
+        : ""),
   });
 
   // Initialize photo if editing and plant has image
@@ -67,7 +70,7 @@ function AddPlantForm({ onPlantAdded, onPlantUpdated, onClose, plantToEdit }) {
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (showResults && !event.target.closest('[data-plant-search]')) {
+      if (showResults && !event.target.closest("[data-plant-search]")) {
         setShowResults(false);
       }
     }
@@ -119,27 +122,30 @@ function AddPlantForm({ onPlantAdded, onPlantUpdated, onClose, plantToEdit }) {
     };
 
     if (isEditMode) {
-      // Edit mode - preserve id and date_added
+      // Edit mode - preserve id, date_added, and last_watered
       const updatedPlant = {
         ...plantToEdit,
         ...plantData,
         id: plantToEdit.id,
         date_added: plantToEdit.date_added,
+        last_watered: plantToEdit.last_watered,
       };
       if (onPlantUpdated) {
         onPlantUpdated(updatedPlant);
       }
     } else {
       // Add mode - generate id and date_added
+      const today = new Date().toISOString().split("T")[0];
       const newPlant = {
         ...plantData,
         id: Date.now().toString(),
-        date_added: new Date().toISOString(),
+        date_added: today,
+        last_watered: today,
       };
       if (onPlantAdded) {
         onPlantAdded(newPlant);
       }
-      
+
       // Reset form only when adding
       setFormData({
         plant_name: "",
