@@ -1,23 +1,20 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import "./PlantFilter.css";
+import "../App.css";
 
-const FILTER_DATA = {
-  sort: [
-    { id: "a-z", label: "Sort A-Z" },
-    { id: "z-a", label: "Sort Z-A" },
-  ],
-  light: [
-    { id: "direct", label: "Direct Light" },
-    { id: "low", label: "Low Light" },
-  ],
-  location: [
-    { id: "living-room", label: "Living Room" },
-    { id: "bedroom", label: "Bedroom" },
-    { id: "kitchen", label: "Kitchen" },
-    { id: "balcony", label: "Balcony" },
-    { id: "bathroom", label: "Bathroom" },
-  ],
-  days: ["M", "T", "W", "T", "F", "S", "S"],
+const SORT_OPTIONS = [
+  { id: "a-z", label: "Sort A-Z" },
+  { id: "z-a", label: "Sort Z-A" },
+];
+
+const SUNLIGHT_MAPPING = {
+  "Direct-Light": "Direct Light",
+  "Low-Light": "Low Light",
+  "Part-Shade": "Part Shade",
+  "Full-Shade": "Full Shade",
+  "Full sun": "Direct Light",
+  "Part shade": "Part Shade",
+  "Filtered Shade": "Part Shade",
 };
 
 function FilterSection({ title, options, selected, onSelect, type }) {
@@ -29,8 +26,8 @@ function FilterSection({ title, options, selected, onSelect, type }) {
       <h3>{title}</h3>
       <div className={isSort ? "sort-options" : "pill-options"}>
         {options.map((option, index) => {
-          const id = option.id ?? index;
-          const label = typeof option === "object" ? option.label : option;
+          const id = option.id ?? option.value ?? option;
+          const label = typeof option === "object" ? (option.label ?? option.value ?? option) : option;
           const isActive = isMultiSelect
             ? selected.includes(id)
             : selected === id;
@@ -46,7 +43,7 @@ function FilterSection({ title, options, selected, onSelect, type }) {
               onClick={() => onSelect(id)}
             >
               {label}
-              {isSort && isActive}
+              {isSort && isActive && " ✓"}
             </button>
           );
         })}
@@ -55,14 +52,41 @@ function FilterSection({ title, options, selected, onSelect, type }) {
   );
 }
 
-export default function PlantFilter() {
+export default function PlantFilter({ plants = [], onFiltersChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState({
     sort: null,
     light: [],
     location: [],
-    watering: [],
+    watering_frequency: "",
   });
+
+  // Dynamically extract unique locations and sunlight types from plants
+  const filterOptions = useMemo(() => {
+    const locations = new Set();
+    const sunlightTypes = new Set();
+
+    plants.forEach((plant) => {
+      // Extract locations
+      if (plant.location) {
+        locations.add(plant.location);
+      }
+
+      // Extract sunlight types
+      if (plant.sunlight) {
+        const sunlightArray = Array.isArray(plant.sunlight) ? plant.sunlight : [plant.sunlight];
+        sunlightArray.forEach((sun) => {
+          const normalized = SUNLIGHT_MAPPING[sun] || sun;
+          sunlightTypes.add(normalized);
+        });
+      }
+    });
+
+    return {
+      locations: Array.from(locations).sort().map(loc => ({ id: loc, label: loc })),
+      sunlight: Array.from(sunlightTypes).sort().map(sun => ({ id: sun, label: sun })),
+    };
+  }, [plants]);
 
   const handleSelect = (category, id) => {
     setFilters((prev) => {
@@ -82,8 +106,26 @@ export default function PlantFilter() {
     });
   };
 
+  const handleWateringChange = (e) => {
+    setFilters((prev) => ({
+      ...prev,
+      watering_frequency: e.target.value,
+    }));
+  };
+
   const clearFilters = () => {
-    setFilters({ sort: null, light: [], location: [], watering: [] });
+    const clearedFilters = { sort: null, light: [], location: [], watering_frequency: "" };
+    setFilters(clearedFilters);
+    if (onFiltersChange) {
+      onFiltersChange(clearedFilters);
+    }
+  };
+
+  const applyFilters = () => {
+    if (onFiltersChange) {
+      onFiltersChange(filters);
+    }
+    setIsOpen(false);
   };
 
   return (
@@ -105,7 +147,7 @@ export default function PlantFilter() {
             <div className="modal-body">
               <FilterSection
                 title="Sort By"
-                options={FILTER_DATA.sort}
+                options={SORT_OPTIONS}
                 selected={filters.sort}
                 onSelect={(id) => handleSelect("sort", id)}
                 type="sort"
@@ -113,7 +155,7 @@ export default function PlantFilter() {
 
               <FilterSection
                 title="Light Requirements"
-                options={FILTER_DATA.light}
+                options={filterOptions.sunlight}
                 selected={filters.light}
                 onSelect={(id) => handleSelect("light", id)}
                 type="light"
@@ -121,19 +163,24 @@ export default function PlantFilter() {
 
               <FilterSection
                 title="Location"
-                options={FILTER_DATA.location}
+                options={filterOptions.locations}
                 selected={filters.location}
                 onSelect={(id) => handleSelect("location", id)}
                 type="location"
               />
 
-              <FilterSection
-                title="Watering Schedule"
-                options={FILTER_DATA.days}
-                selected={filters.watering}
-                onSelect={(id) => handleSelect("watering", id)}
-                type="watering"
-              />
+              <div className="filter-section">
+                <h3>Watering Frequency</h3>
+                <input
+                  className="form-input"
+                  type="number"
+                  placeholder="Days between watering"
+                  value={filters.watering_frequency}
+                  onChange={handleWateringChange}
+                  min="1"
+                  style={{ width: "100%" }}
+                />
+              </div>
             </div>
 
             <div className="modal-footer">
@@ -142,7 +189,7 @@ export default function PlantFilter() {
               </button>
               <button
                 className="button-primary"
-                onClick={() => setIsOpen(false)}
+                onClick={applyFilters}
               >
                 Apply Filters
               </button>
