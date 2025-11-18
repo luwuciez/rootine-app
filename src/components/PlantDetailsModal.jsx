@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import placeholder from "../assets/placeholder.png";
+import trashIcon from "../assets/trash.svg"; // Add this import
 import "../App.css";
 
 function PlantDetailsModal({ plant, onClose, onEdit, onDelete }) {
@@ -108,15 +109,15 @@ function PlantDetailsModal({ plant, onClose, onEdit, onDelete }) {
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="plant-details-actions">
-          <button className="btn edit-btn" onClick={onEdit}>
+          <button className="edit-btn" onClick={onEdit}>
             Edit
           </button>
-          <button className="btn delete-btn" onClick={onDelete}>
-            Delete
+          <button className="delete-btn" onClick={onDelete}>
+            <img src={trashIcon} alt="" className="btn-icon" />
           </button>
         </div>
+
       </div>
     </dialog>
   );
