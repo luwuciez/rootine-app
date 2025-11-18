@@ -2,21 +2,36 @@ import { useState, useRef, useEffect } from "react";
 import { searchPlants } from "../services/plantApi";
 import "../App.css";
 
-function AddPlantForm({ onPlantAdded, onClose }) {
+function AddPlantForm({ onPlantAdded, onPlantUpdated, onClose, plantToEdit }) {
   const [photo, setPhoto] = useState(null);
   const fileInputRef = useRef();
+  const isEditMode = !!plantToEdit;
   
-  // Form state
+  // Form state - initialize with plantToEdit if editing
   const [formData, setFormData] = useState({
-    plant_name: "",
-    nickname: "",
-    location: "",
-    sunlight: "",
-    watering_frequency: "",
+    plant_name: plantToEdit?.plant_name || plantToEdit?.common_name || "",
+    nickname: plantToEdit?.nickname || "",
+    location: plantToEdit?.location || "",
+    sunlight: plantToEdit?.sunlight || (Array.isArray(plantToEdit?.sunlight) ? plantToEdit.sunlight[0] : ""),
+    watering_frequency: plantToEdit?.watering_frequency || 
+      (plantToEdit?.watering_interval ? 
+        (plantToEdit.watering_interval.unit === "weeks" ? 
+          ((plantToEdit.watering_interval.min + plantToEdit.watering_interval.max) / 2 * 7) : 
+          ((plantToEdit.watering_interval.min + plantToEdit.watering_interval.max) / 2)) : 
+        ""),
   });
 
+  // Initialize photo if editing and plant has image
+  useEffect(() => {
+    if (plantToEdit?.image) {
+      setPhoto(plantToEdit.image);
+    }
+  }, [plantToEdit]);
+
   // Plant search state
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(
+    plantToEdit?.plant_name || plantToEdit?.common_name || ""
+  );
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -93,10 +108,7 @@ function AddPlantForm({ onPlantAdded, onClose }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Generate id and date_added automatically
-    const newPlant = {
-      id: Date.now().toString(),
-      date_added: new Date().toISOString(),
+    const plantData = {
       plant_name: formData.plant_name,
       nickname: formData.nickname,
       location: formData.location,
@@ -105,22 +117,40 @@ function AddPlantForm({ onPlantAdded, onClose }) {
       image: photo || "",
     };
 
-    // Call the callback to add the plant
-    if (onPlantAdded) {
-      onPlantAdded(newPlant);
+    if (isEditMode) {
+      // Edit mode - preserve id and date_added
+      const updatedPlant = {
+        ...plantToEdit,
+        ...plantData,
+        id: plantToEdit.id,
+        date_added: plantToEdit.date_added,
+      };
+      if (onPlantUpdated) {
+        onPlantUpdated(updatedPlant);
+      }
+    } else {
+      // Add mode - generate id and date_added
+      const newPlant = {
+        ...plantData,
+        id: Date.now().toString(),
+        date_added: new Date().toISOString(),
+      };
+      if (onPlantAdded) {
+        onPlantAdded(newPlant);
+      }
+      
+      // Reset form only when adding
+      setFormData({
+        plant_name: "",
+        nickname: "",
+        location: "",
+        sunlight: "",
+        watering_frequency: "",
+      });
+      setPhoto(null);
+      setSearchQuery("");
+      setSearchResults([]);
     }
-
-    // Reset form
-    setFormData({
-      plant_name: "",
-      nickname: "",
-      location: "",
-      sunlight: "",
-      watering_frequency: "",
-    });
-    setPhoto(null);
-    setSearchQuery("");
-    setSearchResults([]);
 
     // Close modal if onClose is provided
     if (onClose) {
@@ -302,7 +332,7 @@ function AddPlantForm({ onPlantAdded, onClose }) {
         </div>
 
         <button type="submit" className="btn primary">
-          Save
+          {isEditMode ? "Update" : "Save"}
         </button>
       </form>
     </div>
