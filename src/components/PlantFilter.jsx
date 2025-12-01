@@ -172,13 +172,11 @@ export default function PlantFilter({ plants = [], onFiltersChange }) {
               <div className="filter-section">
                 <h3>Watering Frequency</h3>
                 <input
-                  className="form-input"
                   type="number"
                   placeholder="Days between watering"
                   value={filters.watering_frequency}
                   onChange={handleWateringChange}
                   min="1"
-                  style={{ width: "100%" }}
                 />
               </div>
             </div>
