@@ -44,7 +44,7 @@
   padding: 0.5rem 1rem;
   border: 2px solid var(--olive);
   border-radius: 9999px;
-  margin-left: 16px;
+  margin: 0;
   font-family: "Alan Sans", sans-serif;
 }
 
@@ -68,7 +68,7 @@
 .modal-content {
   background-color: #fff;
   border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 360px;
   max-height: 90vh;
@@ -207,7 +207,6 @@
   background: var(--day-bg-active);
   border-color: #b6c3a6;
   color: var(--text-dark);
-
 }
 
 /* === Keep watering schedule days (M T W T F S S) in one line === */
