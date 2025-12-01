@@ -14,19 +14,14 @@
   right: 0;
   width: 100%;
   height: 60px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #aab77c;
   color: white;
   padding: 16px;
   box-sizing: border-box;
   z-index: 10;
-  max-width: 100%;
   margin: 0 auto;
-}
-
-.navbar > * {
-  flex: 0 0 auto;
 }
 
 .logo {
@@ -74,8 +69,9 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
   padding: 16px;
+  padding-bottom: 0;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -98,25 +94,95 @@ main {
   font-size: 120px;
 }
 
-.temperatures {
+.hour-selector {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  gap: 8px;
 }
 
-.temperatures p {
+.hour-slider {
+  width: 30%;
+  height: 6px;
+  border-radius: 3px;
+  background: #d4d9ca;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Chrome, Safari, Edge */
+.hour-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #596a3a;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: -6px; /* Center thumb vertically: (thumb height - track height) / 2 = (18-6)/2 = 6px */
+}
+
+.hour-slider::-webkit-slider-thumb:hover {
+  background: #4a5e2f;
+}
+
+.hour-slider::-webkit-slider-runnable-track {
+  background: #d4d9ca;
+  height: 6px;
+  border-radius: 3px;
+}
+
+/* Firefox */
+.hour-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #596a3a;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+  transform: translateY(-6px); /* Center thumb vertically for Firefox */
+}
+
+.hour-slider::-moz-range-thumb:hover {
+  background: #4a5e2f;
+}
+
+.hour-slider::-moz-range-track {
+  background: #d4d9ca;
+  height: 6px;
+  border-radius: 3px;
+  border: none;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.info-container p {
   font-size: 1rem;
   margin: 0;
 }
 
-.temperature--low span,
-.temperature--high span {
+.info-number {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.info-left span,
+.info-right span {
   font-size: 3rem;
   font-weight: 700;
 }
 
-span.celsius {
-  font-size: 1rem;
+span.subscript {
+  font-size: 1.5rem;
   font-weight: 400;
   margin-left: 4px;
 }
@@ -606,6 +672,7 @@ form {
 
   .weather-container {
     padding: 16px;
+    padding-bottom: 0;
     gap: 24px;
   }
 
@@ -634,14 +701,14 @@ form {
 /* Tablet: 768px and up */
 @media (min-width: 768px) {
   .app {
-    max-width: 768px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
   .navbar {
     padding: 20px 24px;
     height: 70px;
-    max-width: 768px;
+    max-width: 100%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -662,7 +729,8 @@ form {
 
   .weather-container {
     padding: 20px 24px;
-    gap: 40px;
+    padding-bottom: 0;
+    gap: 32px;
     max-width: 100%;
   }
 
@@ -679,9 +747,13 @@ form {
     font-size: 140px;
   }
 
-  .temperature--low span,
-  .temperature--high span {
+  .info-left span,
+  .info-right span {
     font-size: 3.5rem;
+  }
+
+  span.subscript {
+    font-size: 2rem;
   }
 
   .catalog {
@@ -749,9 +821,6 @@ form {
   .navbar {
     padding: 24px 48px;
     height: 80px;
-    max-width: 1440px;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .logo {
@@ -770,9 +839,10 @@ form {
 
   .weather-container {
     padding: 24px 48px;
+    padding-bottom: 0;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 48px;
+    gap: 32px;
   }
 
   .weather__info h1 {
@@ -783,9 +853,13 @@ form {
     font-size: 160px;
   }
 
-  .temperature--low span,
-  .temperature--high span {
+  .info-left span,
+  .info-right span {
     font-size: 4rem;
+  }
+
+  span.subscript {
+    font-size: 2.5rem;
   }
 
   .catalog {
@@ -881,5 +955,58 @@ form {
 
   .form-title {
     font-size: 18px;
+  }
+}
+
+@media (max-width: 379.98px) {
+  .weather-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+    padding-bottom: 0;
+  }
+
+  .weather__icon {
+    font-size: 80px;
+    max-width: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .weather__info {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .info-left span,
+  .info-right span {
+    font-size: 2.2rem;
+  }
+
+  span.subscript {
+    font-size: 1rem;
+  }
+
+  .hour-selector {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hour-slider {
+    width: 80%;
+  }
+
+  .hour-label {
+    margin: 0;
   }
 }
