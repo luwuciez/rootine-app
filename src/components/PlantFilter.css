@@ -23,6 +23,16 @@
   font-family: "Alan Sans", sans-serif;
 }
 
+/* ===== Container ===== */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
 /* ===== Trigger button (unchanged) ===== */
 .filter-button {
   display: inline-flex;
@@ -59,7 +69,7 @@
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1);
-  width: 100%;
+  width: 90%;
   max-width: 360px;
   max-height: 90vh;
   display: flex;
@@ -290,4 +300,121 @@
 
 .button-primary:hover {
   background: var(--olive-600);
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+
+/* Tablet: 768px and up */
+@media (min-width: 768px) {
+  .container {
+    padding: 20px 24px;
+  }
+
+  .filter-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  .modal-content {
+    max-width: 500px;
+  }
+
+  .modal-header {
+    padding: 24px 28px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-body {
+    padding: 20px 28px;
+  }
+
+  .filter-section h3 {
+    font-size: 1rem;
+  }
+
+  .sort-option {
+    padding: 14px 18px;
+    font-size: 1.125rem;
+  }
+
+  .pill {
+    padding: 12px 20px;
+    font-size: 1.125rem;
+  }
+
+  .button-secondary,
+  .button-primary {
+    padding: 14px 20px;
+    font-size: 1.125rem;
+  }
+}
+
+/* Desktop: 1024px and up */
+@media (min-width: 1024px) {
+  .container {
+    padding: 24px 32px;
+  }
+
+  .filter-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .modal-content {
+    max-width: 600px;
+  }
+
+  .modal-header {
+    padding: 28px 32px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .modal-body {
+    padding: 24px 32px;
+  }
+
+  .filter-section {
+    margin-bottom: 24px;
+  }
+
+  .filter-section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 12px;
+  }
+
+  .sort-options {
+    gap: 12px;
+  }
+
+  .sort-option {
+    padding: 16px 20px;
+    font-size: 1.25rem;
+  }
+
+  .pill-options {
+    gap: 12px;
+  }
+
+  .pill {
+    padding: 14px 24px;
+    font-size: 1.25rem;
+  }
+
+  .modal-footer {
+    padding: 24px 32px;
+    gap: 16px;
+  }
+
+  .button-secondary,
+  .button-primary {
+    padding: 16px 24px;
+    font-size: 1.25rem;
+  }
 }
